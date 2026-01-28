@@ -29,12 +29,12 @@
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
-						<Border x:Name="RoundButtonBorder" CornerRadius="22" Margin="0" BorderThickness="0" Background="LightGray" Padding="8">
-							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" TextBlock.FontSize="12" />
+                        <Border x:Name="RoundButtonBorder" CornerRadius="22" Margin="0" BorderThickness="0" Background="#3C3C3C" Padding="8">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" TextBlock.FontSize="12" TextBlock.Foreground="White" />
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
-								<Setter TargetName="RoundButtonBorder" Property="Background" Value="DarkGray"/>
+                                <Setter TargetName="RoundButtonBorder" Property="Background" Value="#505050"/>
 							</Trigger>
 						</ControlTemplate.Triggers>
 					</ControlTemplate>
@@ -45,12 +45,12 @@
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
-						<Border x:Name="RoundButtonBorder" CornerRadius="14,14,0,0" Margin="0" BorderThickness="2, 2, 2, 0" Background="LightGreen" Padding="8, 7, 8, 8" >
-							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" TextBlock.FontSize="12" />
+                        <Border x:Name="RoundButtonBorder" CornerRadius="14,14,0,0" Margin="0" BorderThickness="2, 2, 2, 0" BorderBrush="#404040" Background="#2D7D2D" Padding="8, 7, 8, 8" >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" TextBlock.FontSize="12" TextBlock.Foreground="White" />
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
-								<Setter TargetName="RoundButtonBorder" Property="Background" Value="GreenYellow"/>
+                                <Setter TargetName="RoundButtonBorder" Property="Background" Value="#3A9A3A"/>
 							</Trigger>
 						</ControlTemplate.Triggers>
 					</ControlTemplate>
@@ -103,7 +103,7 @@
 		<Grid Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,38,0" Visibility="{Binding UpdateAvailable, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}">
 			<Button Name="UpdateButton" Style="{StaticResource TabButton}" Cursor="Hand" Click="UpdateButton_OnClick">An update is available!</Button>
 		</Grid>
-		<Border Grid.Row="1" BorderThickness="0" CornerRadius="24" Background="White" Cursor="IBeam" MouseDown="SearchBox_MouseDown">
+        <Border Grid.Row="1" BorderThickness="0" CornerRadius="24" Background="#2D2D2D" Cursor="IBeam" MouseDown="SearchBox_MouseDown">
 			<Border.Effect>
 				<DropShadowEffect ShadowDepth="2" BlurRadius="16" Direction="-75" Opacity="0.8" />
 			</Border.Effect>
@@ -114,6 +114,8 @@
 				</Grid.ColumnDefinitions>
 				<Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" Margin="32, 0, 32, 0">
 					<TextBox Margin="4" Name="SearchTextBox"
+                             Foreground="White"
+                             CaretBrush="White"
                              Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                              TextChanged="SearchTextBox_TextChanged"
                              PreviewKeyDown="SearchTextBox_PreviewKeyDown">
@@ -129,7 +131,7 @@
 				</Button>
 			</Grid>
 		</Border>
-		<Border Grid.Row="2" BorderThickness="0" Background="White" Margin="0, 14, 0, 0">
+        <Border Grid.Row="2" BorderThickness="0" Background="#2D2D2D" Margin="0, 14, 0, 0">
 			<Border.Effect>
 				<DropShadowEffect ShadowDepth="2" BlurRadius="16" Direction="-75" Opacity="0.8" />
 			</Border.Effect>
@@ -139,6 +141,8 @@
                       MouseDoubleClick="WindowsListView_MouseDoubleClick"
                       PreviewKeyDown="WindowsListView_PreviewKeyDown"
                       BorderBrush="Transparent"
+                      Background="#2D2D2D"
+                      Foreground="White"
                       MaxHeight="{Binding Path=AvailableWindowHeight}"
 					  Visibility="{Binding IsLoading, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InvertAndVisibilityConverter}}"
                       ItemsSource="{Binding Windows.View}"
@@ -165,7 +169,7 @@
 						<Grid>
 							<ContentControl Content="{Binding View}" Height="48" HorizontalAlignment="Stretch" />
 							<Grid Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.IsRowIndexVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
-								<Border Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Converter={StaticResource IndexWithinRangeConverter}, ConverterParameter=9, Mode=OneWay}" Name="RowIndexLabel" Grid.Column="0" CornerRadius="8" Width="16" Height="16" Margin="4" Padding="0" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <Border Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Converter={StaticResource IndexWithinRangeConverter}, ConverterParameter=9, Mode=OneWay}" Name="RowIndexLabel" Grid.Column="0" CornerRadius="8" Width="16" Height="16" Margin="4" Padding="0" Background="#2D2D2D" BorderBrush="#808080" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left">
 									<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Converter={StaticResource IndexConverter}, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="12" Foreground="Black" />
 								</Border>
 							</Grid>
